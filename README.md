@@ -1,6 +1,16 @@
-Arquitectura del Backend
+# Proyecto Full Stack - Sistema de Ventas
 
-´´´
+Este proyecto consiste en una aplicación web completa para el manejo de ventas, con un backend en FastAPI y un frontend en React, diseñada para almacenar datos en BigQuery.
+
+## 🏗️ Arquitectura General
+
+La aplicación sigue una arquitectura de microservicios con separación clara entre frontend y backend, facilitando el despliegue independiente y la escalabilidad.
+
+## 🔧 Backend
+
+### Estructura del Proyecto
+
+```
 backend/
 ├── app/
 │   ├── main.py                  # Entry point (FastAPI app)
@@ -22,20 +32,32 @@ backend/
 ├── requirements.txt
 ├── Dockerfile
 └── .env                         # Variables locales (no subir al repo)
-´´´
+```
 
-Tecnologías / Librerías
-fastapi
-uvicorn[standard]
-pydantic
-google-cloud-bigquery
-python-dotenv
-loguru o structlog para logging
-pytest (tests)
+### Tecnologías Backend
 
+- **FastAPI**: Framework web moderno y rápido para APIs
+- **Uvicorn**: Servidor ASGI de alto rendimiento
+- **Pydantic**: Validación de datos y serialización
+- **Google Cloud BigQuery**: Almacenamiento y análisis de datos
+- **Python-dotenv**: Manejo de variables de entorno
+- **Loguru/Structlog**: Sistema de logging avanzado
+- **Pytest**: Framework de testing
 
-Arquitectura del Frontend
-´´´
+### Características del Backend
+
+- **API RESTful**: Endpoints bien estructurados siguiendo convenciones REST
+- **Validación de datos**: Usando Pydantic para validación automática
+- **Logging estructurado**: Para mejor debugging y monitoreo
+- **Integración BigQuery**: Escritura directa a Google Cloud BigQuery
+- **Gestión de tokens**: Sistema de autenticación y autorización
+- **Testing**: Suite de pruebas unitarias con pytest
+
+## 🎨 Frontend
+
+### Estructura del Proyecto
+
+```
 frontend/
 ├── public/                     # Archivos públicos (favicon, etc)
 ├── src/
@@ -49,11 +71,79 @@ frontend/
 ├── package.json
 ├── .env
 └── nginx.conf                  # Configuración del servidor
+```
 
-Tecnologías / Librerías
-React
-Vite
-Axios o fetch
-TailwindCSS (opcional, para UI limpia)
-React Router (si decides tener más de una ruta)
-´´´
+### Tecnologías Frontend
+
+- **React**: Biblioteca para interfaces de usuario
+- **Vite**: Build tool moderno y rápido
+- **Axios/Fetch**: Cliente HTTP para consumir APIs
+- **TailwindCSS**: Framework CSS utilitario (opcional)
+- **React Router**: Enrutamiento del lado del cliente
+- **Nginx**: Servidor web para producción
+
+### Características del Frontend
+
+- **Componentes reutilizables**: Arquitectura modular y mantenible
+- **Estado reactivo**: Manejo eficiente del estado de la aplicación
+- **Validación del lado del cliente**: Mejor experiencia de usuario
+- **Responsive design**: Adaptable a diferentes dispositivos
+- **Build optimizado**: Usando Vite para builds rápidos
+
+## 🚀 Despliegue
+
+Ambos servicios incluyen Dockerfile para facilitar el despliegue en contenedores:
+
+- **Backend**: Ejecuta con Uvicorn en un contenedor Python
+- **Frontend**: Build estático servido por Nginx
+
+## 🔒 Configuración
+
+### Variables de Entorno
+
+**Backend (.env)**:
+- Configuración de BigQuery
+- Secrets y tokens
+- Configuración de base de datos
+
+**Frontend (.env)**:
+- URL del API backend
+- Configuraciones del cliente
+
+## 🧪 Testing
+
+El proyecto incluye:
+- Tests unitarios para el backend con pytest
+- Estructura preparada para tests de integración
+- Validación de endpoints y servicios
+
+## 📋 Requisitos
+
+- Python 3.8+
+- Node.js 16+
+- Cuenta de Google Cloud (para BigQuery)
+- Docker (opcional, para despliegue)
+
+## 🏃‍♂️ Inicio Rápido
+
+### Backend
+```bash
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature
+3. Commit tus cambios
+4. Push a la rama
+5. Abre un Pull Request
