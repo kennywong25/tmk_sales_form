@@ -1,0 +1,19 @@
+# backend/cloudbuild-prod.yaml
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'us-central1-docker.pkg.dev/$PROJECT_ID/connectdatasilver-wolkvox-salesform-backend-prod/salesform-backend:latest',
+        '.'
+      ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'us-central1-docker.pkg.dev/$PROJECT_ID/connectdatasilver-wolkvox-salesform-backend-prod/salesform-backend:latest'
+      ]
+
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/connectdatasilver-wolkvox-salesform-backend-prod/salesform-backend:latest'

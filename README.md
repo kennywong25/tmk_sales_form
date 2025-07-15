@@ -147,3 +147,61 @@ npm run dev
 3. Commit tus cambios
 4. Push a la rama
 5. Abre un Pull Request
+
+---
+
+## Repositorios en Artifact Registry
+
+### Repositorios creados 
+
+Repositorios creados para alojar el ambiente dev y prod del backend que orquesta la recepción y flujo de datos.
+
+#### Backend
+
+```bash
+# Repo para desarrollo (backend del formulario Wolkvox)
+gcloud artifacts repositories create connectdatasilver-wolkvox-salesform-backend-dev \
+  --repository-format=docker \
+  --location=us-central1 \
+  --description="Backend de Wolkvox SalesForm (dev)"
+
+# Repo para producción
+gcloud artifacts repositories create connectdatasilver-wolkvox-salesform-backend-prod \
+  --repository-format=docker \
+  --location=us-central1 \
+  --description="Backend de Wolkvox SalesForm (prod)"
+```
+
+#### Fronend
+
+Es importante está en el proyecto correcto para realizar el despliegue, ejecutar el siguiente comando.
+
+### Carga de Imagen
+
+Ambiente Dev
+```bash
+gcloud builds submit backend \
+  --config=backend/cloudbuild-dev.yaml \
+  --project=connectdatasilver
+```
+
+Ambiente Prod
+```bash
+gcloud builds submit backend \
+  --config=backend/cloudbuild-prod.yaml \
+  --project=connectdatasilver
+```
+
+### Despliegue de función
+
+Una vez ya la imagene sté actualizada podemos desplegar nuestras funciones en Cloud Run.
+
+#### Backend
+
+## Despliegue en Cloud Run
+
+### Dev
+
+```bash
+
+```
